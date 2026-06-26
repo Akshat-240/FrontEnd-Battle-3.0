@@ -1,36 +1,166 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Synapse AI
+### Autonomous Agent Infrastructure Platform
 
-## Getting Started
+> A premium AI SaaS landing page built for **Frontend Battle 3.0 (2026)** organized by the **Web & Design Society, IIT Bhubaneswar**.
 
-First, run the development server:
+Synapse AI showcases a modern AI infrastructure platform focused on autonomous workflows, real-time analytics, and enterprise-grade user experience. The project emphasizes performance, responsive design, accessibility, and premium visual storytelling using the latest frontend technologies.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## ✨ Highlights
+
+- Premium AI SaaS landing page
+- Responsive Bento Grid → Mobile Accordion
+- High-performance Pricing Engine
+- AI Operations Dashboard
+- Glassmorphism UI
+- Pure CSS animations
+- Scroll reveal system
+- SEO optimized
+- Accessibility focused
+- Server-first architecture
+
+---
+
+## 🛠 Tech Stack
+
+- **Next.js 16**
+- **React**
+- **TypeScript**
+- **Tailwind CSS v4**
+- **Three.js**
+- **React Three Fiber**
+- **React Drei**
+
+---
+
+## 🚀 Features
+
+### Hero
+- Premium animated AI visualization
+- Interactive 3D experience
+- Responsive CTA section
+
+### Features
+- Bento Grid (Desktop)
+- Accordion Layout (Mobile)
+- Context Lock between layouts
+- Smooth CSS interactions
+
+### AI Dashboard
+- AI workflow visualization
+- Live agent monitoring
+- Performance metrics
+- Token throughput
+- Inference pipeline
+- Activity stream
+- Confidence indicators
+
+### Pricing
+- Dynamic pricing matrix
+- Currency switching
+- Monthly / Annual billing
+- Performance-optimized rendering
+
+### Additional Sections
+- Client Logos
+- Statistics
+- Testimonials
+- FAQ
+- Modern Footer
+
+---
+
+## ⚡ Performance
+
+- Server Components wherever possible
+- Optimized client islands
+- Minimal client-side JavaScript
+- Lazy-loaded 3D components
+- Optimized assets
+- Semantic HTML
+- Responsive layouts
+- Lighthouse optimized
+
+---
+
+## ♿ Accessibility
+
+- Semantic HTML5
+- Keyboard navigation
+- Focus-visible states
+- ARIA attributes
+- Responsive typography
+- WCAG-aware color contrast
+
+---
+
+## 📂 Project Structure
+
+```
+src/
+│
+├── app/
+├── components/
+│   ├── dashboard/
+│   ├── features/
+│   ├── pricing/
+│   ├── sections/
+│   └── layout/
+│
+├── hooks/
+├── lib/
+├── styles/
+└── public/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📦 Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+git clone https://github.com/Akshat-240/FrontEnd-Battle-3.0.git
 
-## Learn More
+cd synapse-ai
 
-To learn more about Next.js, take a look at the following resources:
+npm install
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Production build
 
-## Deploy on Vercel
+```bash
+npm run build
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+npm start
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🎯 Competition
+
+Built for **Frontend Battle 3.0 (2026)**
+
+**Organizer:** Web & Design Society, IIT Bhubaneswar
+
+Focus Areas:
+
+- UI Engineering
+- Frontend Performance
+- Accessibility
+- Responsive Design
+- Modern Web Technologies
+- User Experience
+
+---
+
+## 👨‍💻 Developer
+
+**Akshat Nigam**
+
+---
+
+## 📄 License
+
+This project was developed exclusively for the Frontend Battle 3.0 competition.
