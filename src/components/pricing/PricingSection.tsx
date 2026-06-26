@@ -1,27 +1,41 @@
 'use client';
 
 import React, { useRef, useEffect } from 'react';
-import { CurrencyCode, CURRENCY_TARIFFS, calculatePrice, TierType } from '@/lib/pricing';
 import { PricingControls } from './PricingControls';
 import { PricingCard } from './PricingCard';
 
+const TIERS = {
+  developer: 29,
+  scale: 79,
+  enterprise: 199,
+};
+
+const CURRENCIES = {
+  USD: { symbol: '$', rate: 1 },
+  INR: { symbol: '₹', rate: 83.5 },
+  EUR: { symbol: '€', rate: 0.92 },
+};
+
+const ANNUAL_MULTIPLIER = 0.8;
+
 export function PricingSection() {
-  const isAnnualRef = useRef(true);
-  const currencyRef = useRef<CurrencyCode>('USD');
+  const currencyRef = useRef<'USD' | 'INR' | 'EUR'>('USD');
+  const billingRef = useRef<'monthly' | 'annual'>('monthly');
 
   useEffect(() => {
-    const updateDOM = () => {
-      const isAnn = isAnnualRef.current;
+    function updatePrices() {
+      const isAnn = billingRef.current === 'annual';
       const curr = currencyRef.current;
-      const sym = CURRENCY_TARIFFS[curr].symbol;
+      const rate = CURRENCIES[curr].rate;
+      const sym = CURRENCIES[curr].symbol;
 
-      // 1. Update prices
-      document.querySelectorAll<HTMLElement>('[data-tier]').forEach(el => {
-        const tier = el.getAttribute('data-tier') as TierType;
-        if (tier) {
-          const newPrice = calculatePrice(tier, curr, isAnn);
-          if (el.textContent !== newPrice.toString()) {
-            el.textContent = newPrice.toString();
+      // 1. Compute and Update prices
+      document.querySelectorAll<HTMLElement>('[data-price]').forEach(el => {
+        const base = Number(el.getAttribute('data-base'));
+        if (base) {
+          const price = Math.round(base * rate * (isAnn ? ANNUAL_MULTIPLIER : 1));
+          if (el.textContent !== price.toString()) {
+            el.textContent = price.toString();
             el.classList.remove('animate-price');
             void el.offsetWidth; // force reflow
             el.classList.add('animate-price');
@@ -77,44 +91,40 @@ export function PricingSection() {
           btn.className = 'currency-btn px-3 py-1 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forsythia text-oceanic/60 hover:text-oceanic dark:text-arctic/70 dark:hover:text-white';
         }
       });
-    };
+    }
+
+    updatePrices(); // Initial execution
 
     // Attach Event Listeners
     const btnMonthly = document.getElementById('btn-monthly');
     const btnAnnual = document.getElementById('btn-annual');
     
     btnMonthly?.addEventListener('click', () => {
-      if (isAnnualRef.current) {
-        isAnnualRef.current = false;
-        updateDOM();
+      if (billingRef.current !== 'monthly') {
+        billingRef.current = 'monthly';
+        updatePrices();
       }
     });
 
     btnAnnual?.addEventListener('click', () => {
-      if (!isAnnualRef.current) {
-        isAnnualRef.current = true;
-        updateDOM();
+      if (billingRef.current !== 'annual') {
+        billingRef.current = 'annual';
+        updatePrices();
       }
     });
 
     document.querySelectorAll<HTMLElement>('.currency-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        const c = btn.getAttribute('data-currency') as CurrencyCode;
+        const c = btn.getAttribute('data-currency') as 'USD' | 'INR' | 'EUR';
         if (c && currencyRef.current !== c) {
           currencyRef.current = c;
-          updateDOM();
+          updatePrices();
         }
       });
     });
   }, []);
 
-  // Initial SSR calculation
-  const initPrices = {
-    starter: calculatePrice('starter', 'USD', true),
-    pro: calculatePrice('pro', 'USD', true),
-    enterprise: calculatePrice('enterprise', 'USD', true),
-  };
-  const initSymbol = CURRENCY_TARIFFS['USD'].symbol;
+  const getInitialPrice = (tier: keyof typeof TIERS) => TIERS[tier]; // Initial load is monthly USD
 
   return (
     <section className="py-32 bg-background relative overflow-hidden" aria-labelledby="pricing-heading">
@@ -137,11 +147,12 @@ export function PricingSection() {
 
         <div className="grid md:grid-cols-3 gap-8 lg:gap-12 items-start max-w-6xl mx-auto">
           <PricingCard
-            tierId="starter"
+            tierId="developer"
             title="Developer"
             description="Perfect for prototyping and evaluating agentic architectures."
-            price={initPrices.starter}
-            currencySymbol={initSymbol}
+            basePrice={TIERS.developer}
+            initialPrice={getInitialPrice('developer')}
+            currencySymbol={CURRENCIES.USD.symbol}
             features={[
               '10M Tokens per month',
               'Shared Inference GPUs',
@@ -151,11 +162,12 @@ export function PricingSection() {
             ]}
           />
           <PricingCard
-            tierId="pro"
+            tierId="scale"
             title="Scale"
             description="Ideal for production workloads requiring low latency."
-            price={initPrices.pro}
-            currencySymbol={initSymbol}
+            basePrice={TIERS.scale}
+            initialPrice={getInitialPrice('scale')}
+            currencySymbol={CURRENCIES.USD.symbol}
             isHighlighted={true}
             features={[
               '100M Tokens per month',
@@ -169,8 +181,9 @@ export function PricingSection() {
             tierId="enterprise"
             title="Enterprise"
             description="Dedicated hardware and bespoke compliance for large orgs."
-            price={initPrices.enterprise}
-            currencySymbol={initSymbol}
+            basePrice={TIERS.enterprise}
+            initialPrice={getInitialPrice('enterprise')}
+            currencySymbol={CURRENCIES.USD.symbol}
             features={[
               'Unlimited Token Volume',
               'Dedicated A100/H100 Clusters',

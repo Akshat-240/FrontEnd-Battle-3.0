@@ -38,7 +38,7 @@ export function DashboardSection() {
             { label: 'Global Requests / Sec', value: '84.2K', trend: '+12%', positive: true },
             { label: 'Average Inference Latency', value: '42ms', trend: '-8ms', positive: true },
           ].map((kpi, idx) => (
-            <div key={idx} className="bg-oceanic text-white rounded-3xl p-6 border border-white/10 shadow-2xl relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
+            <article key={idx} className="bg-oceanic text-white rounded-3xl p-6 border border-white/10 shadow-2xl relative overflow-hidden group hover:-translate-y-1 transition-transform duration-300">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/3 group-hover:bg-forsythia/10 transition-colors" />
               <p className="text-sm text-mint/70 font-medium mb-2">{kpi.label}</p>
               <div className="flex items-baseline gap-3">
@@ -47,7 +47,7 @@ export function DashboardSection() {
                   {kpi.trend}
                 </span>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
@@ -64,7 +64,7 @@ export function DashboardSection() {
                   <h3 className="text-xl font-bold mb-1">Projected Revenue Growth</h3>
                   <p className="text-sm text-mint/70">Based on active agent execution limits</p>
                 </div>
-                <h4 className="text-2xl sm:text-3xl font-extrabold text-forsythia">$4.2M <span className="text-sm text-mint/70 font-medium">ARR</span></h4>
+                <p className="text-2xl sm:text-3xl font-extrabold text-forsythia">$4.2M <span className="text-sm text-mint/70 font-medium">ARR</span></p>
               </div>
               
               <div className="sr-only">

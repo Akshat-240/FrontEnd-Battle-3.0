@@ -5,7 +5,8 @@ export interface PricingCardProps {
   tierId: string;
   title: string;
   description: string;
-  price: number;
+  basePrice: number;
+  initialPrice: number;
   currencySymbol: string;
   isHighlighted?: boolean;
   features: string[];
@@ -21,7 +22,8 @@ const PricingCard = React.memo(({
   tierId,
   title,
   description,
-  price,
+  basePrice,
+  initialPrice,
   currencySymbol,
   isHighlighted = false,
   features,
@@ -50,7 +52,7 @@ const PricingCard = React.memo(({
       </div>
 
       <div className="mb-8">
-        <PriceDisplay tierId={tierId} price={price} currencySymbol={currencySymbol} className={isHighlighted ? 'text-white' : ''} />
+        <PriceDisplay tierId={tierId} basePrice={basePrice} initialPrice={initialPrice} currencySymbol={currencySymbol} className={isHighlighted ? 'text-white' : ''} />
       </div>
 
       <ul className="flex-1 space-y-4 mb-8">

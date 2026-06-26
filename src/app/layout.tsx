@@ -18,14 +18,18 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://your-deployed-url.vercel.app'),
   title: "Synapse AI | Autonomous Agent Infrastructure",
-  description: "The premium SaaS platform designed for high-performance teams. Deploy intelligent autonomous workflows with sub-10ms latency and deterministic outputs.",
-  keywords: ["AI", "Autonomous Agents", "LLM Infrastructure", "Edge Inference", "VRAM Pooling"],
+  description: "Deploy intelligent workflows with sub-10ms latency and enterprise-grade deterministic outputs.",
+  keywords: ["AI automation", "autonomous agents", "ML infrastructure", "AI platform", "enterprise AI", "workflow orchestration"],
   authors: [{ name: "Synapse AI Team" }],
+  icons: {
+    icon: "/favicon.ico",
+  },
   openGraph: {
     title: "Synapse AI | Autonomous Agent Infrastructure",
-    description: "The premium SaaS platform designed for high-performance teams. Deploy intelligent autonomous workflows with sub-10ms latency.",
-    url: "https://synapse.ai",
+    description: "Deploy intelligent workflows with sub-10ms latency and enterprise-grade deterministic outputs.",
+    url: "https://your-deployed-url.vercel.app",
     siteName: "Synapse AI",
     images: [
       {
@@ -41,7 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Synapse AI | Autonomous Agent Infrastructure",
-    description: "The premium SaaS platform designed for high-performance teams.",
+    description: "Deploy intelligent workflows with sub-10ms latency and enterprise-grade deterministic outputs.",
     images: ["/hero_preview.png"],
   },
   robots: {
@@ -58,7 +62,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: "#152731",
+  themeColor: "#172B36", // Oceanic Noir
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,

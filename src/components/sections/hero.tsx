@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export function Hero() {
   return (
-    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+    <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden" aria-labelledby="hero-heading">
       {/* Premium Ambient Background */}
       <div className="absolute inset-0 bg-background overflow-hidden -z-10">
         {/* Animated Mesh Gradient / Radial Glows */}
@@ -25,7 +25,7 @@ export function Hero() {
           Synapse-Omega Model Available Now
         </div>
         
-        <h1 className="font-mono text-4xl sm:text-5xl md:text-7xl font-bold text-oceanic tracking-tight mb-6 max-w-4xl leading-[1.1]">
+        <h1 id="hero-heading" className="font-mono text-4xl sm:text-5xl md:text-7xl font-bold text-oceanic tracking-tight mb-6 max-w-4xl leading-[1.1]">
           Orchestrate complex tasks with <span className="text-transparent bg-clip-text bg-gradient-to-r from-oceanic to-nocturnal">autonomous agents</span>.
         </h1>
         

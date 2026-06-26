@@ -40,7 +40,7 @@ export function TestimonialsSection() {
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {testimonials.map((testimonial, idx) => (
-            <div 
+            <article 
               key={idx} 
               className="bg-white/80 dark:bg-nocturnal/40 backdrop-blur-md rounded-3xl border border-oceanic/10 dark:border-white/10 p-8 shadow-[0_8px_32px_rgba(23,43,54,0.05),inset_0_1px_0_rgba(255,255,255,0.6)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)] flex flex-col justify-between group hover:-translate-y-2 transition-transform duration-300"
               data-animate
@@ -61,7 +61,7 @@ export function TestimonialsSection() {
                   <p className="text-sm text-oceanic/60 dark:text-arctic/60">{testimonial.role}</p>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
