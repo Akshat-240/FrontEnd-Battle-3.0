@@ -18,7 +18,12 @@
   
   /* Shadows */
   --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 8px 24px rgba(23, 43, 54, 0.08);
+  --shadow-card-hover: 0 18px 40px rgba(23, 43, 54, 0.16);
+  --shadow-dashboard: 0 30px 80px rgba(23, 43, 54, 0.18);
   --shadow-glass: 0 8px 32px rgba(255, 255, 255, 0.1);
+  --shadow-premium-inner: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.05);
+  --shadow-premium-outer: var(--shadow-card);
   
   /* Radii */
   --radius-sm: 4px;
@@ -31,27 +36,97 @@
 :root {
   --background: var(--color-arctic);
   --foreground: var(--color-oceanic);
+  --mouse-x: 50%;
+  --mouse-y: 50%;
 }
 
 body {
   @apply antialiased selection:bg-forsythia/30 selection:text-oceanic;
 }
 
-/* Base utility for scroll reveal */
-[data-animate] {
-  transition: opacity 300ms ease-out, transform 300ms ease-out;
-}
+/* --- Cinematic Choreography --- */
+/* Wait for JS observer to be ready before hiding elements to prevent FOUC */
 
-/* Only hide if the global JS scroll system has initialized and marked it ready */
-[data-animate][data-scroll-ready="true"]:not([data-in-view="true"]) {
+/* 1. Hero: Fade + Scale + Glow */
+[data-animate="hero"] {
+  transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), filter 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+[data-animate="hero"][data-scroll-ready="true"]:not([data-in-view="true"]) {
   opacity: 0;
-  transform: translateY(20px);
+  transform: scale(0.95) translateY(30px);
+  filter: brightness(0.8) blur(10px);
+}
+[data-animate="hero"][data-in-view="true"] {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  filter: brightness(1) blur(0);
 }
 
-/* Reveal state */
-[data-animate][data-in-view="true"] {
+/* 2. Features Stagger */
+[data-animate="stagger"] {
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-animate="stagger"][data-scroll-ready="true"]:not([data-in-view="true"]) {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+}
+[data-animate="stagger"][data-in-view="true"] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+/* We apply delay directly to children in React or use standard stagger */
+
+/* 3. Dashboard / General Component Reveal */
+[data-animate="dashboard"],
+[data-animate="reveal"] {
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-animate="dashboard"][data-scroll-ready="true"]:not([data-in-view="true"]),
+[data-animate="reveal"][data-scroll-ready="true"]:not([data-in-view="true"]) {
+  opacity: 0;
+  transform: translateY(30px);
+}
+[data-animate="dashboard"][data-in-view="true"],
+[data-animate="reveal"][data-in-view="true"] {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* 4. Pricing Cards (independent rise) */
+[data-animate="pricing"] {
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-animate="pricing"][data-scroll-ready="true"]:not([data-in-view="true"]) {
+  opacity: 0;
+  transform: translateY(60px);
+}
+[data-animate="pricing"][data-in-view="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 5. Testimonials Cascade */
+[data-animate="cascade"] {
+  transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+[data-animate="cascade"][data-scroll-ready="true"]:not([data-in-view="true"]) {
+  opacity: 0;
+  transform: translateX(30px) translateY(30px);
+}
+[data-animate="cascade"][data-in-view="true"] {
+  opacity: 1;
+  transform: translateX(0) translateY(0);
+}
+
+/* 6. Footer Fade */
+[data-animate="fade"] {
+  transition: opacity 1.5s ease;
+}
+[data-animate="fade"][data-scroll-ready="true"]:not([data-in-view="true"]) {
+  opacity: 0;
+}
+[data-animate="fade"][data-in-view="true"] {
+  opacity: 1;
 }
 
 @keyframes price-scale {
@@ -62,13 +137,99 @@ body {
   animation: price-scale 0.2s ease-out forwards;
 }
 
-/* --- Features Module --- */
-/* Bento Active State (triggered by JS for context lock or native hover) */
+/* --- Premium Cards --- */
+.premium-card {
+  position: relative;
+  transition: transform 150ms ease-out, box-shadow 150ms ease-out, border-color 150ms ease-out;
+  background-color: rgba(17, 76, 90, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: var(--shadow-card);
+  overflow: visible;
+}
+
+
+/* Animated Border Glow using pseudo-element */
+.premium-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(from var(--angle, 0deg) at 50% 50%, transparent 0%, var(--color-forsythia) 25%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin-glow {
+  to { --angle: 360deg; }
+}
+
+.premium-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(255, 255, 255, 0.2);
+  z-index: 10;
+}
+
+.premium-card:hover::after {
+  opacity: 1;
+  animation: spin-glow 3s linear infinite;
+}
+
+/* Ensure inner content stays above reflections/glows */
+.premium-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Button Hierarchy */
+.btn-primary {
+  background-color: var(--color-forsythia);
+  color: var(--color-oceanic);
+  box-shadow: 0 4px 12px rgba(23, 43, 54, 0.1);
+  transition: transform 150ms ease-out, box-shadow 150ms ease-out, background-color 150ms ease-out;
+}
+.btn-primary:hover {
+  background-color: var(--color-saffron);
+  transform: scale(1.03) translateY(-2px);
+  box-shadow: 0 8px 24px rgba(23, 43, 54, 0.15);
+}
+
+.btn-glass {
+  background-color: rgba(23, 43, 54, 0.05);
+  border: 1px solid rgba(23, 43, 54, 0.1);
+  color: var(--color-oceanic);
+  box-shadow: var(--shadow-subtle);
+  transition: transform 150ms ease-out, box-shadow 150ms ease-out, background-color 150ms ease-out;
+}
+.btn-glass:hover {
+  background-color: rgba(23, 43, 54, 0.08);
+  transform: scale(1.03) translateY(-2px);
+  box-shadow: 0 8px 20px rgba(23, 43, 54, 0.08);
+}
+
+/* Features Active Overrides */
 .bento-card.bento-active,
 .bento-card:hover {
   transform: translateY(-8px);
-  box-shadow: var(--shadow-glass), 0 10px 40px -10px var(--color-forsythia);
-  border-color: var(--color-forsythia);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.bento-card.bento-active::after,
+.bento-card:hover::after {
+  opacity: 1;
+  animation: spin-glow 3s linear infinite;
 }
 
 .bento-card.bento-active .glow-bg,
@@ -83,6 +244,7 @@ body {
   color: var(--color-oceanic);
   border-color: transparent;
 }
+
 
 /* Accordion Grid Animation */
 .accordion-content {
@@ -102,47 +264,99 @@ body {
 }
 
 /* --- Hero Background Animations --- */
-@keyframes blob-float {
-  0% {
-    transform: translate(0px, 0px) scale(1);
-  }
-  33% {
-    transform: translate(30px, -50px) scale(1.1);
-  }
-  66% {
-    transform: translate(-20px, 20px) scale(0.9);
-  }
-  100% {
-    transform: translate(0px, 0px) scale(1);
-  }
+
+/* 18s Infinite Aurora Loop */
+@keyframes aurora-1 {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.5; }
+  33% { transform: translate(15%, -10%) scale(1.1) rotate(45deg); opacity: 0.8; }
+  66% { transform: translate(-10%, 15%) scale(0.9) rotate(90deg); opacity: 0.6; }
+  100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.5; }
 }
 
-.animate-blob {
-  animation: blob-float 15s infinite ease-in-out alternate;
+@keyframes aurora-2 {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.3; }
+  33% { transform: translate(-15%, 20%) scale(1.2) rotate(-30deg); opacity: 0.5; }
+  66% { transform: translate(20%, -15%) scale(0.8) rotate(-60deg); opacity: 0.7; }
+  100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.3; }
 }
 
-.animation-delay-2000 {
-  animation-delay: 2s;
+@keyframes aurora-3 {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.4; }
+  33% { transform: translate(10%, 10%) scale(0.9) rotate(20deg); opacity: 0.6; }
+  66% { transform: translate(-20%, -20%) scale(1.1) rotate(-20deg); opacity: 0.3; }
+  100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.4; }
 }
 
-.animation-delay-4000 {
-  animation-delay: 4s;
+.animate-aurora-1 {
+  animation: aurora-1 18s ease-in-out infinite alternate;
 }
 
-@keyframes pan-bg {
-  from {
-    background-position: 0% 0%;
-  }
-  to {
-    background-position: 100px 100px;
-  }
+.animate-aurora-2 {
+  animation: aurora-2 18s ease-in-out infinite alternate-reverse;
 }
 
-.animate-pan-bg {
-  animation: pan-bg 20s infinite linear;
+.animate-aurora-3 {
+  animation: aurora-3 18s ease-in-out infinite alternate;
+  animation-delay: -5s;
+}
+
+/* Parallax Container */
+.parallax-bg {
+  transform: translate(
+    calc((var(--mouse-x) - 50%) * 0.02),
+    calc((var(--mouse-y) - 50%) * 0.02)
+  );
+  transition: transform 0.1s ease-out;
+}
+
+@keyframes grid-flow {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 60px; }
+}
+
+.animate-grid-flow {
+  animation: grid-flow 20s linear infinite;
 }
 
 .glass-reflection {
   background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 15%, rgba(255,255,255,0) 100%);
 }
 
+/* Staggered Dashboard Animations */
+.stagger-1 { animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards; }
+.stagger-2 { animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s backwards; }
+.stagger-3 { animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s backwards; }
+.stagger-4 { animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards; }
+.stagger-5 { animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s backwards; }
+
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes dash-flow {
+  to { stroke-dashoffset: -24; }
+}
+
+.animate-dash-flow {
+  animation: dash-flow 1s linear infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 200, 1, 0.4); }
+  70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 200, 1, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 200, 1, 0); }
+}
+
+.pulse-ring {
+  animation: pulse-ring 2s infinite;
+}
+
+@keyframes scan-line {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(800px); }
+}
+
+.animate-scan-line {
+  animation: scan-line 3s linear infinite;
+}

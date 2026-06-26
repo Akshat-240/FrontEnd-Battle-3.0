@@ -23,17 +23,17 @@ export function TestimonialsSection() {
   ];
 
   return (
-    <section className="py-32 bg-background relative overflow-hidden" aria-labelledby="testimonials-heading">
+    <section className="py-32 bg-mint relative overflow-hidden" aria-labelledby="testimonials-heading">
       <div className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 w-[800px] h-[800px] opacity-20 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-radial from-oceanic/40 to-transparent blur-3xl rounded-full"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16" data-animate>
-          <h2 id="testimonials-heading" className="text-3xl md:text-4xl font-extrabold text-foreground tracking-tight mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-16" data-animate="reveal">
+          <h2 id="testimonials-heading" className="text-balance text-3xl md:text-4xl font-extrabold text-foreground tracking-tighter mb-4 leading-[1.1]">
             Trusted by engineering teams globally
           </h2>
-          <p className="text-base sm:text-lg text-oceanic/70 dark:text-arctic/70 px-4">
+          <p className="text-balance text-base sm:text-lg text-oceanic/70 dark:text-arctic/70 px-4 leading-[1.7]">
             See how industry leaders are scaling their autonomous workflows with Synapse.
           </p>
         </div>
@@ -42,12 +42,13 @@ export function TestimonialsSection() {
           {testimonials.map((testimonial, idx) => (
             <article 
               key={idx} 
-              className="bg-white/80 dark:bg-nocturnal/40 backdrop-blur-md rounded-3xl border border-oceanic/10 dark:border-white/10 p-8 shadow-[0_8px_32px_rgba(23,43,54,0.05),inset_0_1px_0_rgba(255,255,255,0.6)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)] flex flex-col justify-between group hover:-translate-y-2 transition-transform duration-300"
-              data-animate
+              className="premium-card bg-white/80 backdrop-blur border border-oceanic/[0.08] shadow-sm rounded-3xl p-8 flex flex-col justify-between group"
+              data-animate="cascade"
+              style={{ transitionDelay: `${idx * 150}ms` }}
             >
               <div className="mb-8 relative">
                 <span className="text-6xl text-forsythia/20 absolute -top-4 -left-2 font-serif leading-none">&quot;</span>
-                <p className="text-oceanic/90 dark:text-arctic/90 relative z-10 font-medium leading-relaxed">
+                <p className="text-oceanic relative z-10 font-medium leading-[1.7]">
                   {testimonial.quote}
                 </p>
               </div>
@@ -58,7 +59,7 @@ export function TestimonialsSection() {
                 </div>
                 <div>
                   <p className="font-bold text-foreground">{testimonial.author}</p>
-                  <p className="text-sm text-oceanic/60 dark:text-arctic/60">{testimonial.role}</p>
+                  <p className="text-sm text-oceanic/70">{testimonial.role}</p>
                 </div>
               </div>
             </article>

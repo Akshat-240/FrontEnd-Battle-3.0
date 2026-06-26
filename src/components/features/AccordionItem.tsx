@@ -10,7 +10,7 @@ interface AccordionItemProps {
 
 export const AccordionItem = React.memo(({ feature, index, isOpen, onClick }: AccordionItemProps) => {
   return (
-    <div className="border border-oceanic/10 dark:border-white/10 rounded-2xl mb-4 bg-white/50 dark:bg-nocturnal/20 backdrop-blur-sm overflow-hidden">
+    <div className="border border-oceanic/10 dark:border-white/10 rounded-2xl mb-4 bg-white/50 dark:bg-nocturnal backdrop-blur-sm overflow-hidden">
       <button
         id={`accordion-btn-${index}`}
         className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-forsythia focus-visible:ring-inset"

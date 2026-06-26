@@ -52,7 +52,7 @@ export function Navbar() {
           </Link>
           <Link
             href="/signup"
-            className="bg-oceanic text-arctic text-sm font-medium px-5 py-2.5 rounded-full hover:bg-nocturnal hover:shadow-[0_4px_14px_rgba(23,43,54,0.3)] transition-all duration-200"
+            className="bg-forsythia text-oceanic text-sm font-bold px-5 py-2.5 rounded-full hover:bg-saffron hover:shadow-[0_4px_14px_rgba(23,43,54,0.3)] transition-all duration-200"
           >
             Get Started
           </Link>
@@ -94,7 +94,7 @@ export function Navbar() {
             </Link>
             <Link
               href="/signup"
-              className="bg-oceanic text-arctic text-base font-medium px-5 py-3 rounded-full text-center"
+              className="bg-forsythia text-oceanic text-base font-bold px-5 py-3 rounded-full text-center hover:bg-saffron transition-colors"
             >
               Get Started
             </Link>

@@ -10,6 +10,7 @@ export interface PricingCardProps {
   currencySymbol: string;
   isHighlighted?: boolean;
   features: string[];
+  index: number;
 }
 
 const CheckIcon = () => (
@@ -27,14 +28,17 @@ const PricingCard = React.memo(({
   currencySymbol,
   isHighlighted = false,
   features,
+  index,
 }: PricingCardProps) => {
   return (
     <article
-      className={`relative flex flex-col p-8 rounded-3xl transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl ${
+      className={`premium-card relative flex flex-col p-8 rounded-3xl transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl ${
         isHighlighted
-          ? 'bg-gradient-to-b from-oceanic to-nocturnal text-white shadow-2xl shadow-nocturnal/20 ring-1 ring-white/10 [box-shadow:inset_0_1px_0_rgba(255,255,255,0.2),0_20px_40px_rgba(17,76,90,0.3)]'
-          : 'bg-white/80 dark:bg-nocturnal/40 backdrop-blur-md border border-oceanic/10 dark:border-white/10 text-oceanic dark:text-arctic shadow-[0_8px_32px_rgba(23,43,54,0.05),inset_0_1px_0_rgba(255,255,255,0.6)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)]'
+          ? 'bg-gradient-to-b from-oceanic to-nocturnal text-white'
+          : 'bg-oceanic/5 border border-oceanic/10 text-oceanic'
       }`}
+      data-animate="pricing"
+      style={{ transitionDelay: `${index * 150}ms` }}
     >
       {isHighlighted && (
         <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -45,8 +49,8 @@ const PricingCard = React.memo(({
       )}
 
       <div className="mb-6">
-        <h3 className={`text-2xl font-bold ${isHighlighted ? 'text-white' : ''}`}>{title}</h3>
-        <p className={`mt-2 text-sm ${isHighlighted ? 'text-arctic/80' : 'text-oceanic/60 dark:text-arctic/70'}`}>
+        <h3 className={`text-3xl font-extrabold tracking-tight ${isHighlighted ? 'text-white' : ''}`}>{title}</h3>
+        <p className={`mt-3 text-sm leading-[1.7] ${isHighlighted ? 'text-arctic/80' : 'text-oceanic/90'}`}>
           {description}
         </p>
       </div>
@@ -59,16 +63,16 @@ const PricingCard = React.memo(({
         {features.map((feature, idx) => (
           <li key={idx} className="flex items-center text-sm">
             <CheckIcon />
-            <span className={isHighlighted ? 'text-arctic/90' : 'text-oceanic/70 dark:text-arctic/80'}>{feature}</span>
+            <span className={isHighlighted ? 'text-arctic/90' : 'text-oceanic font-medium'}>{feature}</span>
           </li>
         ))}
       </ul>
 
       <button
-        className={`w-full py-3 px-6 rounded-full font-bold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forsythia focus-visible:ring-offset-2 ${
+        className={`w-full py-4 px-6 rounded-full font-bold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forsythia focus-visible:ring-offset-2 ${
           isHighlighted
-            ? 'bg-forsythia text-oceanic hover:bg-saffron'
-            : 'bg-oceanic text-white hover:bg-nocturnal dark:bg-white dark:text-oceanic dark:hover:bg-mint'
+            ? 'btn-primary'
+            : 'bg-oceanic text-white hover:bg-nocturnal hover:shadow-lg dark:bg-white dark:text-oceanic dark:hover:bg-mint dark:hover:shadow-lg'
         }`}
         aria-label={`Get started with ${title} plan`}
       >
