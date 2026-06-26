@@ -40,6 +40,12 @@
   --mouse-y: 50%;
 }
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
 body {
   @apply antialiased selection:bg-forsythia/30 selection:text-oceanic;
 }

@@ -4,13 +4,13 @@ import React from 'react';
 
 export function DashboardSection() {
   return (
-    <section className="py-32 bg-oceanic relative overflow-hidden" aria-labelledby="dashboard-heading">
+    <section className="py-24 md:py-32 bg-oceanic relative overflow-hidden" aria-labelledby="dashboard-heading">
       {/* Background ambient glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] opacity-15 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-radial from-nocturnal via-oceanic to-transparent blur-3xl rounded-full"></div>
       </div>
 
-      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 relative z-10" data-animate="dashboard">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 min-w-0" data-animate="dashboard">
         <div className="text-center max-w-4xl mx-auto mb-16">
           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-nocturnal text-arctic text-sm font-semibold mb-8 border border-white/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.12)] stagger-1">
             <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)] animate-pulse"></span>
@@ -26,13 +26,13 @@ export function DashboardSection() {
         </div>
 
         {/* Global Dashboard Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:h-[800px]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 lg:h-[800px] min-w-0">
           
           {/* Left Column: Activity & Agents */}
-          <div className="lg:col-span-3 flex flex-col gap-8 h-full stagger-4">
+          <div className="lg:col-span-3 flex flex-col gap-6 md:gap-8 h-full min-w-0 stagger-4">
             
             {/* Live Agent Status */}
-            <div className="bg-nocturnal rounded-3xl p-6 flex flex-col h-1/3 relative overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)] border border-white/[0.08] transition-all duration-300 hover:shadow-[0_8px_40px_rgba(0,0,0,0.3)] group">
+            <div className="bg-nocturnal rounded-3xl p-5 sm:p-6 flex flex-col min-h-72 lg:h-1/3 relative overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)] border border-white/[0.08] transition-all duration-300 hover:shadow-[0_8px_40px_rgba(0,0,0,0.3)] group">
               {/* Glass reflection */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none"></div>
               
@@ -79,7 +79,7 @@ export function DashboardSection() {
             </div>
 
             {/* Activity Stream */}
-            <div className="bg-nocturnal rounded-3xl p-6 flex flex-col h-2/3 relative overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)] border border-white/[0.08] transition-all duration-300 hover:shadow-[0_8px_40px_rgba(0,0,0,0.3)]">
+            <div className="bg-nocturnal rounded-3xl p-5 sm:p-6 flex flex-col min-h-[26rem] lg:h-2/3 relative overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)] border border-white/[0.08] transition-all duration-300 hover:shadow-[0_8px_40px_rgba(0,0,0,0.3)]">
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none"></div>
               
               <div className="flex justify-between items-center mb-6 relative z-10">
@@ -123,9 +123,9 @@ export function DashboardSection() {
           </div>
 
           {/* Middle Column: Core Pipeline & Ring */}
-          <div className="lg:col-span-6 flex flex-col gap-8 h-full stagger-5">
+          <div className="lg:col-span-6 flex flex-col gap-6 md:gap-8 h-full min-w-0 stagger-5">
             {/* Inference Pipeline / Workflow Graph */}
-            <div className="bg-nocturnal rounded-3xl p-6 flex flex-col flex-1 relative overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.15)] border border-white/[0.1] transition-all duration-300">
+            <div className="bg-nocturnal rounded-3xl p-5 sm:p-6 flex flex-col min-h-[24rem] md:min-h-[32rem] lg:min-h-0 lg:flex-1 relative overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.15)] border border-white/[0.1] transition-all duration-300">
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.05] to-transparent pointer-events-none"></div>
               
               <h3 className="text-mint/70 font-bold text-sm tracking-widest uppercase mb-6 relative z-10 flex items-center gap-2">
@@ -172,7 +172,7 @@ export function DashboardSection() {
                 </svg>
 
                 {/* Node: INGEST */}
-                <div className="absolute left-[15%] top-[25%] -translate-x-1/2 -translate-y-1/2 w-[60px] h-[60px] rounded-[14px] bg-nocturnal/90 border border-white/10 flex flex-col items-center justify-center z-10 shadow-[0_4px_20px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md transition-transform duration-300 hover:scale-[1.05]">
+                <div className="absolute left-[15%] top-[25%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 sm:w-[60px] sm:h-[60px] rounded-[14px] bg-nocturnal/90 border border-white/10 flex flex-col items-center justify-center z-10 shadow-[0_4px_20px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md transition-transform duration-300 hover:scale-[1.05]">
                   <div className="w-5 h-5 rounded-full bg-mint/10 flex items-center justify-center mb-1 border border-mint/20 relative">
                     <div className="w-1.5 h-1.5 bg-mint rounded-full shadow-[0_0_5px_var(--color-mint)] animate-[pulse_2s_ease-in-out_infinite]"></div>
                     <div className="absolute inset-0 rounded-full border border-mint/30 animate-[pulse-ring_2s_cubic-bezier(0.4,0,0.6,1)_infinite]"></div>
@@ -181,7 +181,7 @@ export function DashboardSection() {
                 </div>
 
                 {/* Node: CONTEXT */}
-                <div className="absolute left-[15%] top-[75%] -translate-x-1/2 -translate-y-1/2 w-[60px] h-[60px] rounded-[14px] bg-nocturnal/90 border border-white/10 flex flex-col items-center justify-center z-10 shadow-[0_4px_20px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md transition-transform duration-300 hover:scale-[1.05]">
+                <div className="absolute left-[15%] top-[75%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 sm:w-[60px] sm:h-[60px] rounded-[14px] bg-nocturnal/90 border border-white/10 flex flex-col items-center justify-center z-10 shadow-[0_4px_20px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md transition-transform duration-300 hover:scale-[1.05]">
                   <div className="w-5 h-5 rounded-full bg-forsythia/10 flex items-center justify-center mb-1 border border-forsythia/20 relative">
                     <div className="w-1.5 h-1.5 bg-forsythia rounded-full shadow-[0_0_5px_var(--color-forsythia)] animate-[pulse_2s_ease-in-out_infinite_0.5s]"></div>
                     <div className="absolute inset-0 rounded-full border border-forsythia/30 animate-[pulse-ring_2s_cubic-bezier(0.4,0,0.6,1)_infinite_0.5s]"></div>
@@ -190,14 +190,14 @@ export function DashboardSection() {
                 </div>
 
                 {/* Node: OMEGA CORE (Largest) */}
-                <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-32 h-32 rounded-[2rem] bg-gradient-to-br from-[#173a4a] to-[#0a192f] border border-white/20 flex flex-col items-center justify-center z-20 shadow-[0_10px_40px_rgba(0,0,0,0.8),inset_0_1px_2px_rgba(255,255,255,0.3)] hover:scale-[1.02] transition-transform duration-300">
+                <div className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-24 h-24 sm:w-32 sm:h-32 rounded-[1.5rem] sm:rounded-[2rem] bg-gradient-to-br from-[#173a4a] to-[#0a192f] border border-white/20 flex flex-col items-center justify-center z-20 shadow-[0_10px_40px_rgba(0,0,0,0.8),inset_0_1px_2px_rgba(255,255,255,0.3)] hover:scale-[1.02] transition-transform duration-300">
                   <div className="absolute inset-[-6px] rounded-[2.2rem] border border-mint/30 pulse-ring"></div>
                   <div className="absolute inset-0 bg-gradient-radial from-mint/10 to-transparent rounded-[2rem] opacity-50 animate-pulse"></div>
-                  <div className="w-12 h-12 bg-mint/10 rounded-full flex items-center justify-center border border-mint/20 mb-2 relative z-10 shadow-[0_0_20px_rgba(217,232,226,0.15)]">
-                    <span className="text-2xl drop-shadow-lg">🧠</span>
+                  <div className="w-9 h-9 sm:w-12 sm:h-12 bg-mint/10 rounded-full flex items-center justify-center border border-mint/20 mb-1 sm:mb-2 relative z-10 shadow-[0_0_20px_rgba(217,232,226,0.15)]">
+                    <span className="text-xl sm:text-2xl drop-shadow-lg">🧠</span>
                   </div>
-                  <span className="text-arctic text-[11px] uppercase tracking-widest font-extrabold relative z-10">Omega Core</span>
-                  <div className="absolute bottom-3 flex gap-1 z-10">
+                  <span className="text-arctic text-[9px] sm:text-[11px] uppercase tracking-widest font-extrabold relative z-10">Omega Core</span>
+                  <div className="absolute bottom-2 sm:bottom-3 flex gap-1 z-10">
                     <span className="w-1 h-1 rounded-full bg-mint animate-pulse" style={{ animationDelay: '0ms' }}></span>
                     <span className="w-1 h-1 rounded-full bg-mint animate-pulse" style={{ animationDelay: '150ms' }}></span>
                     <span className="w-1 h-1 rounded-full bg-mint animate-pulse" style={{ animationDelay: '300ms' }}></span>
@@ -205,7 +205,7 @@ export function DashboardSection() {
                 </div>
 
                 {/* Node: REASONING */}
-                <div className="absolute left-[72%] top-[50%] -translate-x-1/2 -translate-y-1/2 w-[60px] h-[60px] rounded-[14px] bg-nocturnal/90 border border-white/10 flex flex-col items-center justify-center z-10 shadow-[0_4px_20px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md transition-transform duration-300 hover:scale-[1.05]">
+                <div className="absolute left-[72%] top-[50%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 sm:w-[60px] sm:h-[60px] rounded-[14px] bg-nocturnal/90 border border-white/10 flex flex-col items-center justify-center z-10 shadow-[0_4px_20px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md transition-transform duration-300 hover:scale-[1.05]">
                   <div className="w-5 h-5 rounded-full bg-saffron/10 flex items-center justify-center mb-1 border border-saffron/20 relative">
                     <div className="w-1.5 h-1.5 bg-saffron rounded-full shadow-[0_0_5px_var(--color-saffron)] animate-[pulse_2s_ease-in-out_infinite_0.2s]"></div>
                   </div>
@@ -213,25 +213,25 @@ export function DashboardSection() {
                 </div>
 
                 {/* Output Branches */}
-                <div className="absolute left-[88%] top-[25%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-xl bg-nocturnal/90 border border-white/10 flex flex-col items-center justify-center z-10 shadow-[0_4px_20px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md transition-colors hover:bg-white/5">
-                  <span className="text-arctic/80 text-[7px] uppercase tracking-wider font-bold">Webhooks</span>
+                <div className="absolute left-[88%] top-[25%] -translate-x-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-nocturnal/90 border border-white/10 flex flex-col items-center justify-center z-10 shadow-[0_4px_20px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md transition-colors hover:bg-white/5">
+                  <span className="text-arctic/80 text-[6px] sm:text-[7px] uppercase tracking-wider font-bold">Webhooks</span>
                 </div>
-                <div className="absolute left-[88%] top-[50%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-xl bg-nocturnal/90 border border-white/10 flex flex-col items-center justify-center z-10 shadow-[0_4px_20px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md transition-colors hover:bg-white/5">
-                  <span className="text-arctic/80 text-[7px] uppercase tracking-wider font-bold">API Resp</span>
+                <div className="absolute left-[88%] top-[50%] -translate-x-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-nocturnal/90 border border-white/10 flex flex-col items-center justify-center z-10 shadow-[0_4px_20px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md transition-colors hover:bg-white/5">
+                  <span className="text-arctic/80 text-[6px] sm:text-[7px] uppercase tracking-wider font-bold">API Resp</span>
                 </div>
-                <div className="absolute left-[88%] top-[75%] -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-xl bg-nocturnal/90 border border-white/10 flex flex-col items-center justify-center z-10 shadow-[0_4px_20px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md transition-colors hover:bg-white/5">
-                  <span className="text-arctic/80 text-[7px] uppercase tracking-wider font-bold">Storage</span>
+                <div className="absolute left-[88%] top-[75%] -translate-x-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-nocturnal/90 border border-white/10 flex flex-col items-center justify-center z-10 shadow-[0_4px_20px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md transition-colors hover:bg-white/5">
+                  <span className="text-arctic/80 text-[6px] sm:text-[7px] uppercase tracking-wider font-bold">Storage</span>
                 </div>
               </div>
             </div>
 
             {/* Bottom Metrics (Throughput / Latency) */}
-            <div className="grid grid-cols-2 gap-8 h-48">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:h-48">
               {/* Token Throughput */}
-              <div className="bg-nocturnal rounded-3xl p-6 flex flex-col justify-between shadow-[0_8px_30px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)] border border-white/[0.08] transition-all duration-300 hover:shadow-[0_8px_40px_rgba(0,0,0,0.3)] relative overflow-hidden group">
+              <div className="bg-nocturnal rounded-3xl p-5 sm:p-6 flex flex-col justify-between min-h-48 shadow-[0_8px_30px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)] border border-white/[0.08] transition-all duration-300 hover:shadow-[0_8px_40px_rgba(0,0,0,0.3)] relative overflow-hidden group">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none"></div>
                 <h3 className="text-mint/70 text-xs font-bold tracking-widest uppercase relative z-10">Token Throughput</h3>
-                <div className="flex items-end justify-between relative z-10">
+                    <div className="flex items-end justify-between gap-4 relative z-10">
                   <div>
                     <p className="text-4xl font-bold text-arctic tracking-tight">1.2B<span className="text-lg text-arctic/60 font-medium">/s</span></p>
                     <p className="text-forsythia text-sm mt-1 font-medium tracking-wide">↑ 14% vs last hour</p>
@@ -250,10 +250,10 @@ export function DashboardSection() {
               </div>
 
               {/* P99 Latency */}
-              <div className="bg-nocturnal rounded-3xl p-6 flex flex-col justify-between shadow-[0_8px_30px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)] border border-white/[0.08] transition-all duration-300 hover:shadow-[0_8px_40px_rgba(0,0,0,0.3)] relative overflow-hidden">
+              <div className="bg-nocturnal rounded-3xl p-5 sm:p-6 flex flex-col justify-between min-h-48 shadow-[0_8px_30px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)] border border-white/[0.08] transition-all duration-300 hover:shadow-[0_8px_40px_rgba(0,0,0,0.3)] relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none"></div>
                 <h3 className="text-mint/70 text-xs font-bold tracking-widest uppercase relative z-10">P99 Latency</h3>
-                <div className="flex items-end justify-between relative z-10">
+                <div className="flex items-end justify-between gap-4 relative z-10">
                   <div>
                     <p className="text-4xl font-bold text-arctic tracking-tight">8<span className="text-lg text-arctic/60 font-medium">ms</span></p>
                     <p className="text-emerald-400 text-sm mt-1 font-medium tracking-wide flex items-center gap-1.5">
@@ -282,9 +282,9 @@ export function DashboardSection() {
           </div>
 
           {/* Right Column: AI Confidence & Deployments */}
-          <div className="lg:col-span-3 flex flex-col gap-8 h-full stagger-5" style={{ animationDelay: '0.6s' }}>
+          <div className="lg:col-span-3 flex flex-col gap-6 md:gap-8 h-full min-w-0 stagger-5" style={{ animationDelay: '0.6s' }}>
             {/* AI Confidence Ring */}
-            <div className="bg-nocturnal rounded-3xl p-6 flex flex-col items-center justify-center h-1/2 relative overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)] border border-white/[0.08] transition-all duration-300 hover:shadow-[0_8px_40px_rgba(0,0,0,0.3)] group">
+            <div className="bg-nocturnal rounded-3xl p-5 sm:p-6 flex flex-col items-center justify-center min-h-[22rem] lg:h-1/2 relative overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)] border border-white/[0.08] transition-all duration-300 hover:shadow-[0_8px_40px_rgba(0,0,0,0.3)] group">
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none"></div>
               
               <div className="absolute top-6 left-6 flex flex-col gap-1 z-10">
@@ -328,7 +328,7 @@ export function DashboardSection() {
             </div>
 
             {/* Anomaly Shield */}
-            <div className="bg-nocturnal rounded-3xl p-6 flex flex-col h-1/2 relative overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)] border border-white/[0.08] transition-all duration-300 hover:shadow-[0_8px_40px_rgba(0,0,0,0.3)]">
+            <div className="bg-nocturnal rounded-3xl p-5 sm:p-6 flex flex-col min-h-[22rem] lg:h-1/2 relative overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.1)] border border-white/[0.08] transition-all duration-300 hover:shadow-[0_8px_40px_rgba(0,0,0,0.3)]">
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent pointer-events-none"></div>
               
               <div className="flex items-center gap-2 mb-6 relative z-10">
@@ -337,27 +337,27 @@ export function DashboardSection() {
               </div>
               
               <div className="flex-1 flex flex-col gap-3 justify-center relative z-10">
-                <div className="flex justify-between items-center bg-white/[0.02] hover:bg-white/[0.04] transition-colors p-3.5 rounded-xl border border-white/[0.05] shadow-sm">
-                  <div className="flex items-center gap-3">
+                <div className="flex justify-between items-center gap-3 bg-white/[0.02] hover:bg-white/[0.04] transition-colors p-3.5 rounded-xl border border-white/[0.05] shadow-sm">
+                  <div className="flex items-center gap-3 min-w-0">
                     <div className="w-8 h-8 rounded-full bg-mint/10 border border-mint/20 flex items-center justify-center text-mint text-xs font-bold shadow-[0_0_10px_rgba(217,232,226,0.1)]">01</div>
-                    <span className="text-sm text-arctic font-medium">DDoS Mitigation</span>
+                    <span className="text-sm text-arctic font-medium truncate">DDoS Mitigation</span>
                   </div>
-                  <span className="text-xs text-emerald-400 font-mono bg-emerald-400/10 px-2.5 py-1 rounded-md border border-emerald-400/20">Active</span>
+                  <span className="text-xs text-emerald-400 font-mono bg-emerald-400/10 px-2.5 py-1 rounded-md border border-emerald-400/20 shrink-0">Active</span>
                 </div>
-                <div className="flex justify-between items-center bg-white/[0.02] hover:bg-white/[0.04] transition-colors p-3.5 rounded-xl border border-white/[0.05] shadow-sm relative overflow-hidden group">
+                <div className="flex justify-between items-center gap-3 bg-white/[0.02] hover:bg-white/[0.04] transition-colors p-3.5 rounded-xl border border-white/[0.05] shadow-sm relative overflow-hidden group">
                   <div className="absolute inset-0 bg-forsythia/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  <div className="flex items-center gap-3 relative z-10">
+                  <div className="flex items-center gap-3 min-w-0 relative z-10">
                     <div className="w-8 h-8 rounded-full bg-forsythia/10 border border-forsythia/20 flex items-center justify-center text-forsythia text-xs font-bold shadow-[0_0_10px_rgba(255,200,1,0.1)]">02</div>
-                    <span className="text-sm text-arctic font-medium">Prompt Injection</span>
+                    <span className="text-sm text-arctic font-medium truncate">Prompt Injection</span>
                   </div>
-                  <span className="text-xs text-forsythia font-mono bg-forsythia/10 px-2.5 py-1 rounded-md border border-forsythia/20 relative z-10">Blocked (12)</span>
+                  <span className="text-xs text-forsythia font-mono bg-forsythia/10 px-2.5 py-1 rounded-md border border-forsythia/20 relative z-10 shrink-0">Blocked (12)</span>
                 </div>
-                <div className="flex justify-between items-center bg-white/[0.02] hover:bg-white/[0.04] transition-colors p-3.5 rounded-xl border border-white/[0.05] shadow-sm">
-                  <div className="flex items-center gap-3">
+                <div className="flex justify-between items-center gap-3 bg-white/[0.02] hover:bg-white/[0.04] transition-colors p-3.5 rounded-xl border border-white/[0.05] shadow-sm">
+                  <div className="flex items-center gap-3 min-w-0">
                     <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white text-xs font-bold">03</div>
-                    <span className="text-sm text-arctic font-medium text-opacity-80">Context Overflow</span>
+                    <span className="text-sm text-arctic font-medium text-opacity-80 truncate">Context Overflow</span>
                   </div>
-                  <span className="text-xs text-arctic/40 font-mono bg-white/5 px-2.5 py-1 rounded-md border border-white/5">Idle</span>
+                  <span className="text-xs text-arctic/40 font-mono bg-white/5 px-2.5 py-1 rounded-md border border-white/5 shrink-0">Idle</span>
                 </div>
               </div>
             </div>
