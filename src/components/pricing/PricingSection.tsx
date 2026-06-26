@@ -135,11 +135,11 @@ export function PricingSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16" data-animate="reveal">
-          <h2 id="pricing-heading" className="text-balance text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tighter mb-6 flex items-center justify-center gap-4 leading-[1.1]">
+          <h2 id="pricing-heading" className="text-balance text-4xl md:text-5xl lg:text-6xl font-extrabold text-oceanic tracking-tighter mb-6 flex items-center justify-center gap-4 leading-[1.1]">
             <img src="/svgs/arrow-trending-up.svg" alt="Growth and scaling" className="w-8 h-8 sm:w-10 sm:h-10 text-oceanic" />
             Predictable compute pricing
           </h2>
-          <p className="text-balance text-lg sm:text-xl text-oceanic/70 dark:text-arctic/70 leading-[1.7]">
+          <p className="text-balance text-lg sm:text-xl text-oceanic/80 font-medium leading-[1.7]">
             Scale your agentic workflows with transparent token pricing and dedicated cluster options. No hidden egress fees.
           </p>
         </div>

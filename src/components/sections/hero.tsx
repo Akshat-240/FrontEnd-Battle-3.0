@@ -22,19 +22,8 @@ export function Hero() {
       aria-labelledby="hero-heading"
       style={{ '--mouse-x': '50%', '--mouse-y': '50%' } as React.CSSProperties}
     >
-      {/* Pure CSS Premium Ambient Background (Linear/Vercel Style) */}
-      <div className="absolute inset-0 overflow-hidden -z-10 bg-arctic">
-        {/* Animated Grid Texture */}
-        <div className="absolute inset-0 opacity-[0.03] animate-grid-flow" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23114C5A\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")', backgroundSize: '60px 60px' }}></div>
-        
-        {/* Subtle Radial Glows (Max Opacity 18%) */}
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-mint/10 blur-[80px] rounded-full mix-blend-multiply opacity-15"></div>
-        <div className="absolute top-[20%] right-[-10%] w-[60%] h-[60%] bg-nocturnal/10 blur-[100px] rounded-full mix-blend-multiply opacity-15"></div>
-        <div className="absolute top-[40%] left-[30%] w-[20%] h-[20%] bg-forsythia/10 blur-[60px] rounded-full mix-blend-multiply opacity-10"></div>
-        
-        {/* Gradient Mask to fade grid at edges */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-arctic pointer-events-none"></div>
-      </div>
+      {/* Background decoration fallback */}
+      <div className="absolute inset-0 bg-gradient-radial from-oceanic/5 to-transparent blur-3xl -z-20"></div>
       
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col items-center text-center relative z-10" data-animate="hero">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-oceanic/5 border border-oceanic/10 text-oceanic text-sm font-medium mb-8 backdrop-blur-sm">
@@ -42,11 +31,11 @@ export function Hero() {
           Synapse-Omega Model Available Now
         </div>
         
-        <h1 id="hero-heading" className="text-balance font-mono text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold text-oceanic tracking-tighter mb-8 max-w-5xl leading-[1.05]">
-          Orchestrate complex tasks with <span className="text-transparent bg-clip-text bg-gradient-to-r from-oceanic to-nocturnal">autonomous agents</span>.
+        <h1 id="hero-heading" className="text-balance font-mono text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter mb-8 max-w-5xl leading-[1.05] text-black drop-shadow-sm">
+          Orchestrate complex tasks with <span className="text-black">autonomous agents</span>.
         </h1>
         
-        <p className="text-balance text-lg sm:text-xl md:text-2xl text-oceanic/80 max-w-3xl mb-12 leading-[1.6]">
+        <p className="text-balance text-lg sm:text-xl md:text-2xl text-black max-w-3xl mb-12 leading-[1.6] font-medium">
           The premier AI infrastructure platform for engineering teams. Deploy intelligent workflows with sub-10ms latency and enterprise-grade deterministic outputs.
         </p>
         
@@ -67,14 +56,18 @@ export function Hero() {
         </div>
         
         {/* Pure CSS AI Control Center Illustration */}
-        <div className="premium-card w-full max-w-5xl mx-auto aspect-[16/9] sm:aspect-[16/10] md:aspect-[16/9] rounded-2xl sm:rounded-[32px] overflow-hidden bg-oceanic/90 flex flex-col group p-4 sm:p-6 shadow-2xl relative">
+        <div className="premium-card w-full max-w-5xl mx-auto aspect-[16/9] sm:aspect-[16/10] md:aspect-[16/9] rounded-[2rem] overflow-hidden bg-oceanic/95 flex flex-col group p-4 sm:p-6 relative transition-transform duration-500 hover:scale-[1.02]">
           
+          {/* Sweeping Light Reflection */}
+          <div className="absolute inset-0 z-50 pointer-events-none overflow-hidden rounded-[2rem]">
+            <div className="absolute top-0 left-[-100%] w-[50%] h-full bg-gradient-to-r from-transparent via-white/5 to-transparent skew-x-[-20deg] group-hover:animate-sweep"></div>
+          </div>          
           {/* Faux browser bar */}
-          <div className="h-10 border-b border-white/10 flex items-center px-4 gap-2 bg-nocturnal/50 backdrop-blur-md absolute top-0 left-0 w-full z-20">
-            <div className="w-3 h-3 rounded-full bg-red-400"></div>
-            <div className="w-3 h-3 rounded-full bg-amber-400"></div>
-            <div className="w-3 h-3 rounded-full bg-emerald-400"></div>
-            <div className="mx-auto text-xs font-mono text-arctic/60 hidden sm:block">app.synapse.ai / dashboard</div>
+          <div className="h-12 border-b border-white/[0.05] shadow-[0_1px_0_rgba(255,255,255,0.02)] flex items-center px-5 gap-2.5 bg-gradient-to-b from-nocturnal/60 to-nocturnal/40 backdrop-blur-xl absolute top-0 left-0 w-full z-20">
+            <div className="w-3.5 h-3.5 rounded-full bg-[#ff5f56] shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_1px_2px_rgba(0,0,0,0.4)] border border-[#e0443e]"></div>
+            <div className="w-3.5 h-3.5 rounded-full bg-[#ffbd2e] shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_1px_2px_rgba(0,0,0,0.4)] border border-[#dea123]"></div>
+            <div className="w-3.5 h-3.5 rounded-full bg-[#27c93f] shadow-[inset_0_1px_1px_rgba(255,255,255,0.2),0_1px_2px_rgba(0,0,0,0.4)] border border-[#1aab29]"></div>
+            <div className="mx-auto text-xs font-mono text-arctic/40 hidden sm:block bg-black/20 px-3 py-1 rounded-md border border-white/5 shadow-inner">app.synapse.ai / dashboard</div>
           </div>
           
           <div className="flex-1 w-full h-full relative pt-12 flex flex-col gap-4">
@@ -82,25 +75,28 @@ export function Hero() {
             <div className="grid grid-cols-12 gap-4 h-full">
               
               {/* Left Panel: Neural Nodes */}
-              <div className="col-span-4 bg-nocturnal/40 border border-white/5 rounded-xl p-4 flex flex-col relative overflow-hidden backdrop-blur-sm shadow-inner">
-                <h3 className="text-arctic/80 text-xs uppercase tracking-widest font-bold mb-4 z-10">Neural Map</h3>
+              <div className="col-span-4 bg-nocturnal/20 border border-white/[0.05] rounded-2xl p-5 flex flex-col relative overflow-hidden shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)]">
+                <h3 className="text-mint/70 text-[10px] uppercase tracking-widest font-bold mb-4 z-10 flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 bg-mint rounded-full animate-pulse shadow-[0_0_8px_rgba(217,232,226,0.8)]"></div>
+                  Neural Map
+                </h3>
                 <div className="flex-1 relative z-10">
-                  {/* Nodes & Lines */}
-                  <div className="absolute top-[20%] left-[20%] w-3 h-3 rounded-full bg-mint shadow-[0_0_15px_var(--color-mint)] animate-pulse"></div>
-                  <div className="absolute top-[50%] left-[10%] w-2 h-2 rounded-full bg-forsythia shadow-[0_0_10px_var(--color-forsythia)] animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                  <div className="absolute top-[30%] left-[60%] w-4 h-4 rounded-full bg-mint shadow-[0_0_15px_var(--color-mint)] animate-pulse" style={{ animationDelay: '1s' }}></div>
-                  <div className="absolute top-[70%] left-[70%] w-2 h-2 rounded-full bg-saffron shadow-[0_0_10px_var(--color-saffron)] animate-pulse" style={{ animationDelay: '1.5s' }}></div>
-                  <div className="absolute top-[80%] left-[30%] w-3 h-3 rounded-full bg-mint shadow-[0_0_15px_var(--color-mint)] animate-pulse" style={{ animationDelay: '2s' }}></div>
+                  {/* Premium Nodes & Lines */}
+                  <div className="absolute top-[20%] left-[20%] w-3 h-3 rounded-full bg-mint border border-white/20 shadow-[0_0_15px_var(--color-mint)] animate-pulse"></div>
+                  <div className="absolute top-[50%] left-[10%] w-2.5 h-2.5 rounded-full bg-forsythia border border-white/20 shadow-[0_0_10px_var(--color-forsythia)] animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                  <div className="absolute top-[30%] left-[60%] w-4 h-4 rounded-full bg-mint border border-white/20 shadow-[0_0_15px_var(--color-mint)] animate-pulse" style={{ animationDelay: '1s' }}></div>
+                  <div className="absolute top-[70%] left-[70%] w-2 h-2 rounded-full bg-saffron border border-white/20 shadow-[0_0_10px_var(--color-saffron)] animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+                  <div className="absolute top-[80%] left-[30%] w-3.5 h-3.5 rounded-full bg-mint border border-white/20 shadow-[0_0_15px_var(--color-mint)] animate-pulse" style={{ animationDelay: '2s' }}></div>
                   
-                  {/* SVG-less CSS Lines (Simulated using thin rotated divs) */}
-                  <div className="absolute top-[24%] left-[24%] w-[40%] h-[1px] bg-gradient-to-r from-mint/50 to-mint/10 origin-left rotate-[15deg]"></div>
-                  <div className="absolute top-[54%] left-[14%] w-[35%] h-[1px] bg-gradient-to-r from-forsythia/50 to-mint/10 origin-left -rotate-[30deg]"></div>
-                  <div className="absolute top-[36%] left-[62%] w-[25%] h-[1px] bg-gradient-to-r from-mint/50 to-saffron/10 origin-left rotate-[75deg]"></div>
-                  <div className="absolute top-[83%] left-[33%] w-[45%] h-[1px] bg-gradient-to-r from-mint/50 to-saffron/10 origin-left -rotate-[15deg]"></div>
+                  {/* Crisp SVG-less CSS Lines */}
+                  <div className="absolute top-[24%] left-[24%] w-[40%] h-[1px] bg-gradient-to-r from-mint to-mint/0 origin-left rotate-[15deg] shadow-[0_0_5px_var(--color-mint)]"></div>
+                  <div className="absolute top-[54%] left-[14%] w-[35%] h-[1px] bg-gradient-to-r from-forsythia to-mint/0 origin-left -rotate-[30deg] shadow-[0_0_5px_var(--color-forsythia)]"></div>
+                  <div className="absolute top-[36%] left-[62%] w-[25%] h-[1px] bg-gradient-to-r from-mint to-saffron/0 origin-left rotate-[75deg] shadow-[0_0_5px_var(--color-mint)]"></div>
+                  <div className="absolute top-[83%] left-[33%] w-[45%] h-[1px] bg-gradient-to-r from-mint to-saffron/0 origin-left -rotate-[15deg] shadow-[0_0_5px_var(--color-mint)]"></div>
                 </div>
                 
-                {/* Bloom effect behind */}
-                <div className="absolute inset-0 bg-gradient-radial from-mint/10 to-transparent blur-xl"></div>
+                {/* Subtle Bloom effect behind */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-radial from-mint/5 to-transparent blur-2xl pointer-events-none"></div>
               </div>
 
               {/* Center Panel: Metric Stream */}
@@ -109,37 +105,36 @@ export function Hero() {
                 {/* Top Metrics Row */}
                 <div className="grid grid-cols-3 gap-4 h-24">
                   {[ 
-                    { label: "Token Throughput", val: "1.2B/s", color: "text-mint" },
-                    { label: "Active Agents", val: "4,092", color: "text-forsythia" },
-                    { label: "Latency (p99)", val: "8ms", color: "text-arctic" }
+                    { label: "Throughput", val: "1.2B/s", color: "text-mint", spark: "from-mint" },
+                    { label: "Active Nodes", val: "4,092", color: "text-forsythia", spark: "from-forsythia" },
+                    { label: "Latency", val: "8ms", color: "text-arctic", spark: "from-arctic" }
                   ].map((m, i) => (
-                    <div key={i} className="bg-nocturnal/40 border border-white/5 rounded-xl p-3 flex flex-col justify-center backdrop-blur-sm hover:bg-nocturnal/60 transition-colors">
-                      <p className="text-arctic/60 text-[10px] uppercase font-bold tracking-wider mb-1">{m.label}</p>
-                      <p className={`text-2xl font-mono font-bold ${m.color}`}>{m.val}</p>
+                    <div key={i} className="bg-nocturnal/20 border border-white/[0.05] rounded-2xl p-4 flex flex-col justify-center relative overflow-hidden hover:bg-white/[0.02] transition-colors group cursor-default">
+                      <p className="text-mint/60 text-[9px] uppercase font-bold tracking-widest mb-1">{m.label}</p>
+                      <p className={`text-2xl font-mono font-bold ${m.color} drop-shadow-md`}>{m.val}</p>
+                      <div className={`absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r ${m.spark} to-transparent opacity-30 group-hover:opacity-100 transition-opacity`}></div>
                     </div>
                   ))}
                 </div>
 
                 {/* Main Graph Area */}
-                <div className="flex-1 bg-nocturnal/40 border border-white/5 rounded-xl p-4 flex flex-col relative overflow-hidden backdrop-blur-sm">
-                  <div className="flex justify-between items-center mb-4 z-10">
-                    <h3 className="text-arctic/80 text-xs uppercase tracking-widest font-bold">System Load</h3>
-                    <div className="w-2 h-2 bg-emerald-500 rounded-full shadow-[0_0_10px_#10b981] animate-pulse"></div>
+                <div className="flex-1 bg-nocturnal/20 border border-white/[0.05] rounded-2xl p-5 flex flex-col relative overflow-hidden group">
+                  <div className="absolute inset-0 bg-gradient-to-t from-forsythia/5 to-transparent pointer-events-none opacity-50 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="flex justify-between items-center mb-6 z-10">
+                    <h3 className="text-mint/70 text-[10px] uppercase tracking-widest font-bold">System Load</h3>
+                    <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full shadow-[0_0_10px_#10b981] animate-pulse"></div>
                   </div>
                   
-                  <div className="flex-1 relative flex items-end gap-1 z-10 opacity-80">
-                    {/* Simulated Bar Chart */}
+                  <div className="flex-1 relative flex items-end gap-1.5 z-10">
+                    {/* Premium Bar Chart */}
                     {[40, 60, 45, 80, 50, 70, 95, 65, 85, 40, 55, 75, 60, 80, 50, 90].map((h, i) => (
                       <div 
                         key={i} 
-                        className="flex-1 bg-gradient-to-t from-forsythia/80 to-saffron/80 rounded-t-sm" 
-                        style={{ height: `${h}%`, animation: `slideUpFade 0.5s ease-out ${i * 0.05}s backwards` }}
+                        className="flex-1 bg-gradient-to-t from-forsythia/40 via-saffron/80 to-saffron rounded-t-sm shadow-[0_-2px_10px_rgba(255,153,50,0.2)]" 
+                        style={{ height: `${h}%`, animation: `slideUpFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.05}s backwards` }}
                       ></div>
                     ))}
                   </div>
-
-                  {/* Gradient Underlay */}
-                  <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-forsythia/10 to-transparent pointer-events-none"></div>
                 </div>
 
               </div>

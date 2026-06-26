@@ -22,10 +22,10 @@ export function FeaturesSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16" data-animate="reveal">
-          <h2 id="features-heading" className="text-balance text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground tracking-tighter mb-6 leading-[1.1]">
+          <h2 id="features-heading" className="text-balance text-4xl md:text-5xl lg:text-6xl font-extrabold text-oceanic tracking-tighter mb-6 leading-[1.1]">
             Built for extreme performance
           </h2>
-          <p className="text-balance text-lg sm:text-xl text-oceanic/70 dark:text-arctic/70 px-4 leading-[1.7]">
+          <p className="text-balance text-lg sm:text-xl text-oceanic/80 font-medium px-4 leading-[1.7]">
             A premium architecture designed to scale seamlessly. No compromises on speed, security, or global reach.
           </p>
         </div>

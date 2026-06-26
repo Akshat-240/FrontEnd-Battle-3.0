@@ -30,10 +30,10 @@ export function TestimonialsSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16" data-animate="reveal">
-          <h2 id="testimonials-heading" className="text-balance text-3xl md:text-4xl font-extrabold text-foreground tracking-tighter mb-4 leading-[1.1]">
+          <h2 id="testimonials-heading" className="text-balance text-3xl md:text-4xl font-extrabold text-oceanic tracking-tighter mb-4 leading-[1.1]">
             Trusted by engineering teams globally
           </h2>
-          <p className="text-balance text-base sm:text-lg text-oceanic/70 dark:text-arctic/70 px-4 leading-[1.7]">
+          <p className="text-balance text-base sm:text-lg text-oceanic/80 dark:text-arctic/80 px-4 leading-[1.7]">
             See how industry leaders are scaling their autonomous workflows with Synapse.
           </p>
         </div>
@@ -58,7 +58,7 @@ export function TestimonialsSection() {
                   {testimonial.companyLogo}
                 </div>
                 <div>
-                  <p className="font-bold text-foreground">{testimonial.author}</p>
+                  <p className="font-bold text-oceanic">{testimonial.author}</p>
                   <p className="text-sm text-oceanic/70">{testimonial.role}</p>
                 </div>
               </div>

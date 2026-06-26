@@ -18,9 +18,9 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ease-in-out ${
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
         scrolled
-          ? "bg-arctic/80 backdrop-blur-md border-b border-oceanic/5 py-4"
+          ? "bg-arctic/70 backdrop-blur-xl border-b border-oceanic/5 shadow-[0_1px_0_rgba(255,255,255,0.8),0_8px_32px_rgba(23,43,54,0.08)] py-3"
           : "bg-transparent py-6"
       }`}
     >
@@ -34,27 +34,32 @@ export function Navbar() {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex items-center gap-8">
-          <Link href="#features" className="text-sm font-medium hover:text-forsythia transition-colors duration-200">
-            Features
+          <Link href="#features" className="text-sm font-medium relative group">
+            <span className="text-oceanic transition-colors duration-300 group-hover:text-nocturnal">Features</span>
+            <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-forsythia transition-all duration-300 group-hover:w-full rounded-full"></span>
           </Link>
-          <Link href="#pricing" className="text-sm font-medium hover:text-forsythia transition-colors duration-200">
-            Pricing
+          <Link href="#pricing" className="text-sm font-medium relative group">
+            <span className="text-oceanic transition-colors duration-300 group-hover:text-nocturnal">Pricing</span>
+            <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-forsythia transition-all duration-300 group-hover:w-full rounded-full"></span>
           </Link>
-          <Link href="#faq" className="text-sm font-medium hover:text-forsythia transition-colors duration-200">
-            FAQ
+          <Link href="#faq" className="text-sm font-medium relative group">
+            <span className="text-oceanic transition-colors duration-300 group-hover:text-nocturnal">FAQ</span>
+            <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-forsythia transition-all duration-300 group-hover:w-full rounded-full"></span>
           </Link>
         </nav>
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-4">
-          <Link href="/login" className="text-sm font-medium hover:text-forsythia transition-colors duration-200">
-            Log in
+          <Link href="/login" className="text-sm font-medium relative group">
+            <span className="text-oceanic transition-colors duration-300 group-hover:text-nocturnal">Log in</span>
+            <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-forsythia transition-all duration-300 group-hover:w-full rounded-full"></span>
           </Link>
           <Link
             href="/signup"
-            className="bg-forsythia text-oceanic text-sm font-bold px-5 py-2.5 rounded-full hover:bg-saffron hover:shadow-[0_4px_14px_rgba(23,43,54,0.3)] transition-all duration-200"
+            className="btn-primary text-sm font-bold px-5 py-2.5 rounded-full relative overflow-hidden group"
           >
-            Get Started
+            <span className="relative z-10">Get Started</span>
+            <div className="absolute top-0 left-[-100%] w-[50%] h-full bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-[-20deg] group-hover:animate-sweep"></div>
           </Link>
         </div>
 
