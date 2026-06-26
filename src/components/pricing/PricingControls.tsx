@@ -13,15 +13,15 @@ export const PricingControls = React.memo(() => {
           aria-pressed={false}
           className="relative w-28 py-2 text-sm font-medium rounded-full transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forsythia text-oceanic/60 hover:text-oceanic dark:text-arctic/70 dark:hover:text-white"
         >
-          <div className="toggle-bg hidden absolute inset-0 bg-white dark:bg-nocturnal rounded-full shadow-sm -z-10 animate-price"></div>
+          <div className="toggle-bg hidden absolute inset-0 bg-nocturnal rounded-full shadow-sm -z-10 animate-price"></div>
           Monthly
         </button>
         <button
           id="btn-annual"
           aria-pressed={true}
-          className="relative w-28 py-2 text-sm font-medium rounded-full transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forsythia text-oceanic dark:text-white shadow-sm"
+          className="relative w-28 py-2 text-sm font-medium rounded-full transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forsythia text-white shadow-sm"
         >
-          <div className="toggle-bg absolute inset-0 bg-white dark:bg-nocturnal rounded-full shadow-sm -z-10 animate-price"></div>
+          <div className="toggle-bg absolute inset-0 bg-nocturnal rounded-full shadow-sm -z-10 animate-price"></div>
           Annually
         </button>
       </div>
@@ -37,7 +37,7 @@ export const PricingControls = React.memo(() => {
               aria-pressed={c === 'USD'}
               className={`currency-btn px-3 py-1 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forsythia ${
                 c === 'USD'
-                  ? 'bg-white dark:bg-nocturnal text-oceanic dark:text-white shadow-sm'
+                  ? 'bg-nocturnal text-white shadow-sm'
                   : 'text-oceanic/60 hover:text-oceanic dark:text-arctic/70 dark:hover:text-white'
               }`}
             >
