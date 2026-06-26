@@ -58,7 +58,7 @@ export function PricingSection() {
         btnMonthly.setAttribute('aria-pressed', (!isAnn).toString());
         btnAnnual.setAttribute('aria-pressed', isAnn.toString());
 
-        const activeClass = 'text-oceanic shadow-sm'.split(' ');
+        const activeClass = 'text-oceanic dark:text-white shadow-sm'.split(' ');
         const inactiveClass = 'text-oceanic/60 hover:text-oceanic dark:text-arctic/70 dark:hover:text-white'.split(' ');
 
         if (isAnn) {
@@ -85,7 +85,7 @@ export function PricingSection() {
         const c = btn.getAttribute('data-currency');
         if (c === curr) {
           btn.setAttribute('aria-pressed', 'true');
-          btn.className = 'currency-btn px-3 py-1 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forsythia bg-white dark:bg-nocturnal text-oceanic shadow-sm';
+          btn.className = 'currency-btn px-3 py-1 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forsythia bg-white dark:bg-nocturnal text-oceanic dark:text-white shadow-sm';
         } else {
           btn.setAttribute('aria-pressed', 'false');
           btn.className = 'currency-btn px-3 py-1 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forsythia text-oceanic/60 hover:text-oceanic dark:text-arctic/70 dark:hover:text-white';
